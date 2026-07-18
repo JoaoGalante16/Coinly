@@ -1,12 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using Coinly.Funções;
+using Coinly.Menus;
 
-Console.Write("Sigla da moeda que deseja pesquisar: ");
-string moeda = Console.ReadLine().ToUpper();
-Console.Clear();
-
-ValidadorMoeda validador = new ValidadorMoeda();
-await validador.CarregarMoedas();
-await validador.ValidarMoeda(moeda);
+MenuPrincipal menu = new MenuPrincipal();
+await menu.ExibirMenuPrincipal();
 

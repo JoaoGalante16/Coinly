@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace Coinly.Funções;
+namespace Coinly.Chamadas;
 
 internal class ChamadaCotacao
 {
@@ -22,7 +22,7 @@ internal class ChamadaCotacao
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+               Console.WriteLine(ex.Message);
                return new Cotacao() ;
             }
     }
