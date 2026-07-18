@@ -6,7 +6,7 @@ Console.Write("Sigla da moeda que deseja pesquisar: ");
 string moeda = Console.ReadLine().ToUpper();
 Console.Clear();
 
-ValidadorMoeda validador = new();
+ValidadorMoeda validador = new ValidadorMoeda();
 await validador.CarregarMoedas();
 await validador.ValidarMoeda(moeda);
 

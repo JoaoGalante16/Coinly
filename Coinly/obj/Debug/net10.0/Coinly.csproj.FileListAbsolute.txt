@@ -12,3 +12,4 @@ C:\Users\joaog\source\repos\Coinly\Coinly\obj\Debug\net10.0\refint\Coinly.dll
 C:\Users\joaog\source\repos\Coinly\Coinly\obj\Debug\net10.0\Coinly.pdb
 C:\Users\joaog\source\repos\Coinly\Coinly\obj\Debug\net10.0\Coinly.genruntimeconfig.cache
 C:\Users\joaog\source\repos\Coinly\Coinly\obj\Debug\net10.0\ref\Coinly.dll
+C:\Users\joaog\source\repos\Coinly\Coinly\obj\Debug\net10.0\Coinly.sourcelink.json

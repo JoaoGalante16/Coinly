@@ -30,9 +30,10 @@ internal class ValidadorMoeda
     {
         if (moedasDisponiveis.ContainsKey(moeda))
         {
-            ChamadaCotacao chamada = new ChamadaCotacao();
-            await chamada.Cotar(moeda);
-
+            var cotacao = await ChamadaCotacao.ApiCotar(moeda);
+            cotacao.MostrarCotacao();
+            await Arquivo.EscreverNoArquivo(cotacao);
+            
         }
         else
         {

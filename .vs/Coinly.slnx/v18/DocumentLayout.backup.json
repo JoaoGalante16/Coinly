@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\joaog\\source\\repos\\Coinly\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\coinly.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\coinly.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\fun\u00E7\u00F5es\\arquivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\fun\u00E7\u00F5es\\arquivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\fun\u00E7\u00F5es\\validadormoeda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +19,12 @@
       "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\fun\u00E7\u00F5es\\chamadacota\u00E7\u00E3o.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\modelos\\cotacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\modelos\\cotacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|c:\\users\\joaog\\source\\repos\\coinly\\coinly\\coinly.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C2276458-DC89-6508-CF27-50D4BAB622A5}|Coinly\\Coinly.csproj|solutionrelative:coinly\\coinly.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Arquivo.cs",
+              "DocumentMoniker": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\Arquivo.cs",
+              "RelativeDocumentMoniker": "Coinly\\Fun\u00E7\u00F5es\\Arquivo.cs",
+              "ToolTip": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\Arquivo.cs",
+              "RelativeToolTip": "Coinly\\Fun\u00E7\u00F5es\\Arquivo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-17T23:37:42.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Coinly.csproj",
               "DocumentMoniker": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Coinly.csproj",
               "RelativeDocumentMoniker": "Coinly\\Coinly.csproj",
@@ -47,27 +64,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ChamadaCota\u00E7\u00E3o.cs",
               "DocumentMoniker": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\ChamadaCota\u00E7\u00E3o.cs",
               "RelativeDocumentMoniker": "Coinly\\Fun\u00E7\u00F5es\\ChamadaCota\u00E7\u00E3o.cs",
               "ToolTip": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\ChamadaCota\u00E7\u00E3o.cs",
               "RelativeToolTip": "Coinly\\Fun\u00E7\u00F5es\\ChamadaCota\u00E7\u00E3o.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBAAAABiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-16T22:00:03.98Z"
+              "WhenOpened": "2026-07-16T22:00:03.98Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ValidadorMoeda.cs",
               "DocumentMoniker": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\ValidadorMoeda.cs",
               "RelativeDocumentMoniker": "Coinly\\Fun\u00E7\u00F5es\\ValidadorMoeda.cs",
               "ToolTip": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Fun\u00E7\u00F5es\\ValidadorMoeda.cs",
               "RelativeToolTip": "Coinly\\Fun\u00E7\u00F5es\\ValidadorMoeda.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAwwCMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-16T21:41:22.687Z"
+              "WhenOpened": "2026-07-16T21:41:22.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -77,13 +96,14 @@
               "RelativeDocumentMoniker": "Coinly\\Modelos\\Cotacao.cs",
               "ToolTip": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Modelos\\Cotacao.cs",
               "RelativeToolTip": "Coinly\\Modelos\\Cotacao.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-16T20:41:53.477Z"
+              "WhenOpened": "2026-07-16T20:41:53.477Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\joaog\\source\\repos\\Coinly\\Coinly\\Program.cs",
               "RelativeDocumentMoniker": "Coinly\\Program.cs",
@@ -91,7 +111,8 @@
               "RelativeToolTip": "Coinly\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-16T20:40:46.001Z"
+              "WhenOpened": "2026-07-16T20:40:46.001Z",
+              "EditorCaption": ""
             }
           ]
         }
