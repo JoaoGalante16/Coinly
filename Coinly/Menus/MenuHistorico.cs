@@ -10,6 +10,7 @@ internal class MenuHistorico
     public static async Task MostrarHistorico()
     {
         Console.WriteLine("Mostrando historico gravado no arquivo");
-        await LerArquivo.LerOArquivo();
+        var listaMoedas = await LerArquivo.LerOArquivo();
+        Filtros.LiqnFilter.FiltrarPorMoeda(listaMoedas, "BTC");
     }
 }
