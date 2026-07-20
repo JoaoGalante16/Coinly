@@ -11,6 +11,8 @@ internal class MenuHistorico
     {
         Console.WriteLine("Mostrando historico gravado no arquivo");
         var listaMoedas = await LerArquivo.LerOArquivo();
-        Filtros.LiqnFilter.FiltrarPorMoeda(listaMoedas, "BTC");
+        Filtros.LinqFilter.FiltrarPorMoeda(listaMoedas, "BTC");
+        Filtros.LinqOrder.OrdenarPorValor(listaMoedas);
+        Filtros.LinqOrder.OrdenarPorData(listaMoedas);
     }
 }

@@ -5,17 +5,16 @@ using System.Text;
 
 namespace Coinly.Filtros;
 
-internal static class LiqnFilter
+internal static class LinqFilter
 {
     public static void FiltrarPorMoeda(List<Cotacao> listaDeMoedas, string moeda)
     {
         var cotacoesPorMoeda = listaDeMoedas.Where(listaDeMoedas => listaDeMoedas.Sigla.Equals(moeda)).ToList();
-        Console.WriteLine($"Cotações da {moeda}:\n");
-        foreach(var m in cotacoesPorMoeda)
+        Console.WriteLine($"\nCotações da {moeda}:\n");
+        foreach (var m in cotacoesPorMoeda)
         {
             Console.WriteLine("--------------");
             m.MostrarCotacao();
         }
-
     }
 }

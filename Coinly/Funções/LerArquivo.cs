@@ -18,11 +18,7 @@ internal class LerArquivo
             while (!leitor.EndOfStream)
             {
                 var linha = leitor.ReadLine();
-                string[] valores = linha.Split(',');
-                var cotacaoMoeda = new Cotacao();
-                cotacaoMoeda.Sigla = valores[0];
-                cotacaoMoeda.Valor = valores[1];
-                cotacaoMoeda.DataHora = valores[2];
+                var cotacaoMoeda = Cotacao.ConverterStringParaCotacao(linha);
                 listaMoedas.Add(cotacaoMoeda);
                 Console.WriteLine("------------------");
                 cotacaoMoeda.MostrarCotacao();
