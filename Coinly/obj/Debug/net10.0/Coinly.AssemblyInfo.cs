@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coinly")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+357ff693afcd64f9160d555184272c0c94cc4ee4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21d97d03483377076be869130c9e6da589d6f846")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coinly")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coinly")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

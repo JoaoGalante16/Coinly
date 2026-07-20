@@ -24,6 +24,7 @@ internal class Cotacao
         Console.WriteLine($"Cotação de {Sigla}");
         Console.WriteLine($"Valor: {Valor}");
         Console.WriteLine($"Data: {DataHora}");
+        Console.WriteLine("-----------------------");
     }
 
     public static Cotacao ConverterStringParaCotacao(string linha)

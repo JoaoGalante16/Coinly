@@ -20,8 +20,6 @@ internal class LerArquivo
                 var linha = leitor.ReadLine();
                 var cotacaoMoeda = Cotacao.ConverterStringParaCotacao(linha);
                 listaMoedas.Add(cotacaoMoeda);
-                Console.WriteLine("------------------");
-                cotacaoMoeda.MostrarCotacao();
             }
             
         }

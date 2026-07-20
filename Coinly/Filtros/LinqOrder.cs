@@ -13,7 +13,6 @@ internal class LinqOrder
         Console.WriteLine("\nOrdenando por valor:\n");
         foreach (var c in ordernadoPorValor)
         { 
-            Console.WriteLine("---------");
             c.MostrarCotacao();
         }
     }
@@ -24,7 +23,6 @@ internal class LinqOrder
         Console.WriteLine("\nOrdenando por mais recente:\n");
         foreach(var c in ordenarPorTimestamp)
         {
-            Console.WriteLine("-------------");
             c.MostrarCotacao();
         }
     }

@@ -6,5 +6,6 @@ namespace Coinly.Menus
 {
     internal class Menu
     {
+
     }
 }
