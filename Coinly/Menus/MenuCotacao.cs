@@ -9,8 +9,9 @@ internal class MenuCotacao
 {
     public static async Task Consultar()
     {
-        Console.Write("Sigla da moeda que deseja pesquisar: ");
-        string moeda = Console.ReadLine().ToUpper();
+        Console.Write("Sigla das moedas que deseja Cotar: ");
+        Console.WriteLine("Exemplo: BTC, USD, ETH");
+        var moeda = Console.ReadLine().ToUpper().Split(",").Select(c => c.Trim()).ToArray();
 
         CotacaoService cotacao = new CotacaoService();
         await cotacao.ProcessarConsulta(moeda);
