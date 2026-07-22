@@ -10,23 +10,29 @@ namespace Coinly.Services;
 
 internal class CotacaoService 
 {
-    public async Task ProcessarConsulta(string[] moeda)
+    public static async Task ProcessarConsulta(string[] moeda)
     {
         var i = 0;
         foreach(var m in moeda)
         {
             var moedas = await ChamadaMoedas.CarregarMoedas();
-            if (moedas.ContainsKey(moeda[i]))
+            if(moedas is not null)
             {
-                var cotacao = await ChamadaCotacao.ApiCotar(moeda[i]);
-                cotacao.MostrarCotacao();
-                await EscreverArquivo.EscreverNoArquivo(cotacao);
+                if (moedas.ContainsKey(moeda[i]))
+                {
+                    var cotacao = await ChamadaCotacao.ApiCotar(moeda[i]);
+                    if(cotacao is not null)
+                    {
+                        cotacao.MostrarCotacao();
+                        await EscreverArquivo.EscreverNoArquivo(cotacao);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"\n{moeda[i]} não disponível\n");
+                }
             }
-            else
-            {
-                Console.WriteLine($"\n{moeda[i]} não disponível\n");
-            }
-            i++;
+        i++;
         }
     }
 }

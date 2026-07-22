@@ -9,7 +9,7 @@ namespace Coinly.Menus;
 internal class MenuMoeda
 {
     
-    public static async Task EixibirMenuMoeda() 
+    public static async Task ExibirMenuMoeda() 
     {
         var listaDeMoedas = await LerArquivo.LerOArquivo();
         Console.WriteLine("Digite as siglas das moedas que deseja procurar:");

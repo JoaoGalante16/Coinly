@@ -1,4 +1,5 @@
-﻿using Coinly.Funções;
+﻿using Coinly.Filtros;
+using Coinly.Funções;
 using Coinly.Modelos;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,12 @@ internal class MenuHistorico
         switch (resposta)
         {
             case 1:
-                foreach(var m in listaDeMoedas)
-                {
-                    m.MostrarCotacao();
-                }
+                Filtros.LinqFilter.FiltrarMoedaMaisCotada(listaDeMoedas);
+            
+                Filtros.LinqOrder.OrdenarPorMoedas(listaDeMoedas);
                 break;
             case 2:
-                MenuMoeda.EixibirMenuMoeda();
+                await MenuMoeda.ExibirMenuMoeda();
                 break;
             default:
                 Console.WriteLine("Opção invalida");

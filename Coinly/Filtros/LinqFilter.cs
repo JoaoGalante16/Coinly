@@ -54,7 +54,7 @@ internal static class LinqFilter
         var i = 0;
         foreach (var m in moeda)
         {
-            var moedaespecifica = listaDeMoedas.Where(lista => lista.Sigla.Equals(moeda[i])).OrderBy(c => c.Timestamp).ToList();
+            var moedaespecifica = listaDeMoedas.Where(lista => lista.Sigla.Equals(moeda[i])).OrderByDescending(c => c.Timestamp).ToList();
             if (moedaespecifica.Count > 0)
             {
                 Console.WriteLine($"\nResumo {moeda[i]}\n");
@@ -69,4 +69,16 @@ internal static class LinqFilter
         }
         
     }
+
+    public static void FiltrarMoedaMaisCotada(List<Cotacao> listaDeMoedas)
+    {
+        var moedaMaisCotada = listaDeMoedas.GroupBy(c => c.Sigla)
+                    .Select(g => new { Sigla = g.Key, Valor = g, Total = g.Count() }).
+                    MaxBy(s => s.Total);
+        if (moedaMaisCotada is not null)
+        {
+            Console.WriteLine($"A moeda mais cotada é {moedaMaisCotada.Sigla} com {moedaMaisCotada.Total} cotações\n");
+        }
+    }
+
 }

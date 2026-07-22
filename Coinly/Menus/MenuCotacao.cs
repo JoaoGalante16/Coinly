@@ -13,7 +13,6 @@ internal class MenuCotacao
         Console.WriteLine("Exemplo: BTC, USD, ETH");
         var moeda = Console.ReadLine().ToUpper().Split(",").Select(c => c.Trim()).ToArray();
 
-        CotacaoService cotacao = new CotacaoService();
-        await cotacao.ProcessarConsulta(moeda);
+        await CotacaoService.ProcessarConsulta(moeda);
     }
 }
