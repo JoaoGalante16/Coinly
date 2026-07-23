@@ -23,6 +23,7 @@ internal class CotacaoService
                     var cotacao = await ChamadaCotacao.ApiCotar(moeda[i]);
                     if(cotacao is not null)
                     {
+                        Cotacao.MostrarCotacaoTabela();
                         cotacao.MostrarCotacao();
                         await EscreverArquivo.EscreverNoArquivo(cotacao);
                     }

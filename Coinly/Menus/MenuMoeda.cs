@@ -18,9 +18,9 @@ internal class MenuMoeda
         Console.WriteLine($"1. Todas cotações por valor");
         Console.WriteLine($"2. Todas cotações por data");
         Console.WriteLine($"3. Ver resumo");
-        var resposta2 = int.Parse(Console.ReadLine());
+        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : 0;
 
-        switch (resposta2)
+        switch (resposta)
             {
                 case 1:
                 Filtros.LinqFilter.FiltrarMoedaValor(listaDeMoedas, entrada);

@@ -14,7 +14,7 @@ internal class MenuHistorico
         var listaDeMoedas = await LerArquivo.LerOArquivo();
         Console.WriteLine("1. Mostrar todas cotações");
         Console.WriteLine("2. Pesquisar uma moeda");
-        var resposta = int.Parse(Console.ReadLine());
+        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : 0;
 
         Console.Clear();
         switch (resposta)

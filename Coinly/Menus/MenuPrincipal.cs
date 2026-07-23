@@ -14,18 +14,19 @@ internal class MenuPrincipal
         Console.WriteLine("Bem vindo! Selecione a operação que deseja!");
         Console.WriteLine("1. Consultar cotação");
         Console.WriteLine("2. Ver historico");
-        int resposta = int.Parse(Console.ReadLine());
+        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : 0;
         Console.Clear();
         switch (resposta)
         {
             case 1:
-                await MenuCotacao.Consultar();
+                await MenuCotacao.MostrarMenuConsultar();
                 break;
             case 2:
                 await MenuHistorico.MostrarHistorico();
                 break;
             default:
                 Console.WriteLine("Opção invalida");
+                await ExibirMenuPrincipal();
                 break;
         }
     }

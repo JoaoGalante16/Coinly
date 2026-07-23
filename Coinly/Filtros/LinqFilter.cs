@@ -18,6 +18,7 @@ internal static class LinqFilter
             if (cotacoesPorMoeda.Count > 0)
             {
                 Console.WriteLine($"\nCotações da {moeda[i]}:\n");
+                Cotacao.MostrarCotacaoTabela();
                 foreach (var c in cotacoesPorMoeda)
                 {
                     c.MostrarCotacao();
@@ -39,6 +40,7 @@ internal static class LinqFilter
             if (cotacoesPorMoeda.Count > 0)
             {
                 Console.WriteLine($"\nCotações da {moeda[i]}:\n");
+                Cotacao.MostrarCotacaoTabela();
                 foreach (var c in cotacoesPorMoeda)
                 {
                     c.MostrarCotacao();

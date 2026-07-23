@@ -18,7 +18,9 @@ internal class LinqOrder
 
             foreach (var moeda in ListaOrdenada)
             {
-                Console.WriteLine("\n===============================\n");
+                var borda = "".PadRight(50, '=');
+                Console.WriteLine($"\n{borda}\n");
+                Cotacao.MostrarCotacaoTabela();
                 foreach (var cotacao in moeda)
                 {
                     cotacao.MostrarCotacao();

@@ -7,12 +7,12 @@ namespace Coinly.Menus;
 
 internal class MenuCotacao
 {
-    public static async Task Consultar()
+    public static async Task MostrarMenuConsultar()
     {
         Console.Write("Sigla das moedas que deseja Cotar: ");
         Console.WriteLine("Exemplo: BTC, USD, ETH");
-        var moeda = Console.ReadLine().ToUpper().Split(",").Select(c => c.Trim()).ToArray();
+        var resposta = Console.ReadLine().ToUpper().Split(",").Select(c => c.Trim()).ToArray();
 
-        await CotacaoService.ProcessarConsulta(moeda);
+        await CotacaoService.ProcessarConsulta(resposta);
     }
 }

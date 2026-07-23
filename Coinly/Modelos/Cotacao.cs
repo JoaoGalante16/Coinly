@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using Coinly.Chamadas;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,10 +22,12 @@ internal class Cotacao
 
     public void MostrarCotacao()
     {
-        Console.WriteLine($"Cotação de {Sigla}");
-        Console.WriteLine($"Valor: {Valor}");
-        Console.WriteLine($"Data: {DataHora}");
-        Console.WriteLine("-----------------------");
+        Console.WriteLine($"{Sigla,-10}{Valor,-15}{DataHora,-15}");
+    }
+
+    public static void MostrarCotacaoTabela()
+    {
+        Console.WriteLine($"{"Moeda",-10}{"Valor",-15}{"Data",-15}");
     }
 
     public static Cotacao ConverterStringParaCotacao(string linha)
