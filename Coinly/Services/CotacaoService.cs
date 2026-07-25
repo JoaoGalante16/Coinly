@@ -8,32 +8,27 @@ using System.Text.Json;
 
 namespace Coinly.Services;
 
-internal class CotacaoService 
+internal class CotacaoService
 {
-    public static async Task ProcessarConsulta(string[] moeda)
+    public static async Task ProcessarConsulta(string moeda)
     {
-        var i = 0;
-        foreach(var m in moeda)
+        var moedas = await ChamadaMoedas.CarregarMoedas();
+        if (moedas is not null)
         {
-            var moedas = await ChamadaMoedas.CarregarMoedas();
-            if(moedas is not null)
+            if (moedas.ContainsKey(moeda))
             {
-                if (moedas.ContainsKey(moeda[i]))
+                var cotacao = await ChamadaCotacao.ApiCotar(moeda);
+                if (cotacao is not null)
                 {
-                    var cotacao = await ChamadaCotacao.ApiCotar(moeda[i]);
-                    if(cotacao is not null)
-                    {
-                        Cotacao.MostrarCotacaoTabela();
-                        cotacao.MostrarCotacao();
-                        await EscreverArquivo.EscreverNoArquivo(cotacao);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"\n{moeda[i]} não disponível\n");
+                    Cotacao.MostrarCotacaoTabela();
+                    cotacao.MostrarCotacao();
+                    await EscreverArquivo.EscreverNoArquivo(cotacao);
                 }
             }
-        i++;
+            else
+            {
+                Console.WriteLine($"\n{moeda} não disponível\n");
+            }
         }
     }
 }

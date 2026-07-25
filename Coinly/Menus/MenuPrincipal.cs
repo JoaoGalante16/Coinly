@@ -12,8 +12,8 @@ internal class MenuPrincipal
     {
         Console.WriteLine("   ____      _       _       \r\n  / ___|___ (_)_ __ | |_   _ \r\n | |   / _ \\| | '_ \\| | | | |\r\n | |__| (_) | | | | | | |_| |\r\n  \\____\\___/|_|_| |_|_|\\__, |\r\n                       |___/ ");
         Console.WriteLine("Bem vindo! Selecione a operação que deseja!");
-        Console.WriteLine("1. Consultar cotação");
-        Console.WriteLine("2. Ver historico");
+        Console.WriteLine("1. Cotar uma moeda");
+        Console.WriteLine("2. Ver historico de moedas");
         var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : 0;
         Console.Clear();
         switch (resposta)
