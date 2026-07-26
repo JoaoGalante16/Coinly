@@ -12,7 +12,8 @@ internal class LerArquivo
     public static async Task<List<Cotacao>> LerOArquivo()
     {
         List<Cotacao> listaMoedas = new();
-        using (var fs = new FileStream("Cotacoes.csv", FileMode.Open))
+        var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly", "Cotacoes.csv");
+        using (var fs = new FileStream(nomeArquivo, FileMode.Open))
         using (var leitor = new StreamReader(fs))
         {
             while (!leitor.EndOfStream)

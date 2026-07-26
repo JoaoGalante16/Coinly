@@ -22,7 +22,7 @@ internal class CotacaoService
                 {
                     Cotacao.MostrarCotacaoTabela();
                     cotacao.MostrarCotacao();
-                    await EscreverArquivo.EscreverNoArquivo(cotacao);
+                    await EscreverArquivo.EscreverNoArquivoCSV(cotacao);
                 }
             }
             else

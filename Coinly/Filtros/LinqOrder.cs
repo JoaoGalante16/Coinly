@@ -12,9 +12,10 @@ internal class LinqOrder
         if (ListaDeMoedas is not null)
         {
             var ListaOrdenada = ListaDeMoedas.OrderBy(c => c.Sigla)
-                .ThenBy(c => c.Timestamp)
-                .GroupBy(c => c.Sigla);
-            
+                .ThenByDescending(c => c.Timestamp)
+                .GroupBy(c => c.Sigla)
+                .ToList();
+
 
             foreach (var moeda in ListaOrdenada)
             {
@@ -27,5 +28,19 @@ internal class LinqOrder
                 }
             }
         }
+    }
+
+    public static List<MoedaAgrupada> OrdenarParaEscreverEmJson(List<Cotacao> cotacoes)
+    {
+        if (cotacoes is not null)
+        {
+            var listaOrdenada = cotacoes
+            .GroupBy(m => m.Sigla)
+            .Select(c => new MoedaAgrupada { Sigla = c.Key, Cotacoes = c.OrderByDescending(m => m.Timestamp).ToList(), Total = c.Count() })
+            .ToList();
+
+            return listaOrdenada;
+        }
+        else return null;
     }
 }

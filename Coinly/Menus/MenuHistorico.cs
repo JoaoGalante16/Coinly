@@ -20,9 +20,12 @@ internal class MenuHistorico
         switch (resposta)
         {
             case 1:
-                Filtros.LinqFilter.FiltrarMoedaMaisCotada(listaDeMoedas);
-            
-                Filtros.LinqOrder.OrdenarPorMoedas(listaDeMoedas);
+                LinqFilter.FiltrarMoedaMaisCotada(listaDeMoedas);
+                LinqOrder.OrdenarPorMoedas(listaDeMoedas);
+                var listaJson = LinqOrder.OrdenarParaEscreverEmJson(listaDeMoedas);
+                await EscreverArquivo.EscreverNoArquivoJson(listaJson);
+                Console.WriteLine("Arquivo criado com as cotações");
+                
                 break;
             case 2:
                 await MenuMoeda.ExibirMenuMoeda();
