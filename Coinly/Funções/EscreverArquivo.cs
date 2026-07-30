@@ -1,9 +1,5 @@
 ﻿using Coinly.Modelos;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.Json;
 
 namespace Coinly.Funções;
@@ -13,6 +9,8 @@ internal class EscreverArquivo
     
     public static async Task EscreverNoArquivoCSV(Cotacao cotacao)
     {
+        var pasta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly");
+        Directory.CreateDirectory(pasta);
         var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly", "Cotacoes.csv");
         using (var fs = new FileStream(nomeArquivo, FileMode.Append))
         using (var escritor = new StreamWriter(fs))
@@ -22,7 +20,7 @@ internal class EscreverArquivo
         }
     }
 
-    public static async Task EscreverNoArquivoJson(List<MoedaAgrupada> cotacoes)
+    public static async Task<string> EscreverNoArquivoJson(List<MoedaAgrupada> cotacoes)
     {
         var jsonOptions = new JsonSerializerOptions
         {
@@ -30,6 +28,8 @@ internal class EscreverArquivo
         };
         var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Cotacoes.json");
         using (var fs = new FileStream(nomeArquivo, FileMode.Create, FileAccess.Write))
-            JsonSerializer.Serialize(fs, cotacoes, jsonOptions);
+           await JsonSerializer.SerializeAsync(fs, cotacoes, jsonOptions);
+
+        return $"\n\nArquivo criado com as cotações em{nomeArquivo}\n";
     }
 }

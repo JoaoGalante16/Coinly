@@ -1,39 +1,35 @@
-﻿using Coinly.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Coinly.Funções;
+using Coinly.Services;
 using System.Text.RegularExpressions;
 
 namespace Coinly.Menus;
 
-internal class MenuCotacao
+internal class MenuCotacao : Menu
 {
-    public static async Task MostrarMenuConsultar()
+    public override async Task Executar()
     {
+        await base.Executar();
         Console.WriteLine("Digite a(s) sigla(s) da(s) moeda(s) que deseja cotar: ");
-        Console.WriteLine("Exemplo: BTC, USD, ETH");
-        var resposta = Console.ReadLine().ToUpper();
-        var regexValidacao = new Regex(@"^([A-Z]{3,4}),?\s?([A-Z]{3,4},?\s?)*?$");
-        if (regexValidacao.IsMatch(resposta))
+        Console.WriteLine("Exemplo: BTC, USD, ETH\n");
+        var entrada = Console.ReadLine().ToUpper();
+        var matches = await ValidadorEntrada.ValidarEntrada(entrada);
+        Console.Clear();
+        if (matches is not null)
         {
-            var regex = new Regex(@",?\s?([A-Z]{3,4})");
-            var matches = regex.Matches(resposta);
-            if (matches is not null)
+            Console.WriteLine("Cotações:\n");
+            foreach (Match match in matches)
             {
-                foreach (Match match in matches)
-                {
-                    var moeda = match.Groups[1].Value;
-                    Console.WriteLine($"[{moeda}]");
-                    //await CotacaoService.ProcessarConsulta(moeda);
-                }
+                var moeda = match.Groups[1].Value;
+                await CotacaoService.ProcessarConsulta(moeda);
             }
+            Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
+            Console.ReadKey();
+            Console.Clear();
+            await new MenuPrincipal().Executar();
         }
         else
         {
-            Console.WriteLine("Entrada invalida, tente novamente");
-            Thread.Sleep(5000);
-            Console.Clear();
-            await MostrarMenuConsultar();
+            await new MenuPrincipal().Executar();
         }
     }
 }

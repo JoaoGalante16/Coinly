@@ -1,10 +1,6 @@
 ﻿using Coinly.Chamadas;
 using Coinly.Funções;
 using Coinly.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
 
 namespace Coinly.Services;
 
@@ -22,6 +18,7 @@ internal class CotacaoService
                 {
                     Cotacao.MostrarCotacaoTabela();
                     cotacao.MostrarCotacao();
+                    Console.WriteLine("--------------------------------------------");
                     await EscreverArquivo.EscreverNoArquivoCSV(cotacao);
                 }
             }

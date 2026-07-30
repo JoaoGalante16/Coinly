@@ -1,8 +1,4 @@
-﻿using Coinly.Chamadas;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace Coinly.Modelos;
@@ -35,7 +31,7 @@ internal class Cotacao
         string[] valores = linha.Split(',');
         var cotacaoMoeda = new Cotacao();
         cotacaoMoeda.Sigla = valores[0];
-        cotacaoMoeda.Valor = double.Parse((valores[1].Replace('.', ',')));
+        cotacaoMoeda.Valor = double.Parse(valores[1], CultureInfo.InvariantCulture);
         cotacaoMoeda.DataHora = valores[2];
         cotacaoMoeda.Timestamp = long.Parse(valores[3]);
         return cotacaoMoeda;

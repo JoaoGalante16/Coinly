@@ -1,17 +1,14 @@
 ﻿using Coinly.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Coinly.Filtros;
 
 internal class LinqOrder
 {
-    public static void OrdenarPorMoedas(List<Cotacao> ListaDeMoedas)
+    public static void OrdenarPorMoedas(List<Cotacao> listaDeMoedas)
     {
-        if (ListaDeMoedas is not null)
+        if (listaDeMoedas is not null)
         {
-            var ListaOrdenada = ListaDeMoedas.OrderBy(c => c.Sigla)
+            var ListaOrdenada = listaDeMoedas.OrderBy(c => c.Sigla)
                 .ThenByDescending(c => c.Timestamp)
                 .GroupBy(c => c.Sigla)
                 .ToList();

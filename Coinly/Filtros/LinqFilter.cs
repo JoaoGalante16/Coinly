@@ -1,7 +1,4 @@
 ﻿using Coinly.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Coinly.Filtros;
 
@@ -9,7 +6,6 @@ internal static class LinqFilter
 {
     public static void FiltrarMoedaData(List<Cotacao> listaDeMoedas, string moeda)
     {
-
         var cotacoesPorMoeda = listaDeMoedas.Where(c => c.Sigla.Equals(moeda))
                 .OrderByDescending(lista => lista.Timestamp)
                 .ToList();
@@ -46,7 +42,6 @@ internal static class LinqFilter
 
     public static void FiltrarValores(List<Cotacao> listaDeMoedas, string moeda)
     {
-
         var moedaespecifica = listaDeMoedas.Where(lista => lista.Sigla.Equals(moeda)).OrderByDescending(c => c.Timestamp).ToList();
         if (moedaespecifica.Count > 0)
         {
@@ -68,7 +63,7 @@ internal static class LinqFilter
                     MaxBy(s => s.Total);
         if (moedaMaisCotada is not null)
         {
-            Console.WriteLine($"A moeda mais cotada é {moedaMaisCotada.Sigla} com {moedaMaisCotada.Total} cotações\n");
+            Console.WriteLine($"A moeda mais cotada é {moedaMaisCotada.Sigla} com {moedaMaisCotada.Total} cotações");
         }
     }
 

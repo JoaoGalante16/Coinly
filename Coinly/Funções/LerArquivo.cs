@@ -13,6 +13,10 @@ internal class LerArquivo
     {
         List<Cotacao> listaMoedas = new();
         var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly", "Cotacoes.csv");
+        if (!File.Exists(nomeArquivo))
+        {
+            return listaMoedas;
+        }
         using (var fs = new FileStream(nomeArquivo, FileMode.Open))
         using (var leitor = new StreamReader(fs))
         {

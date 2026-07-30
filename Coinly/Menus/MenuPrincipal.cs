@@ -1,32 +1,32 @@
-﻿using Coinly.Funções;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Channels;
+﻿namespace Coinly.Menus;
 
-namespace Coinly.Menus;
-
-internal class MenuPrincipal
+internal class MenuPrincipal : Menu
 {
-    public async Task ExibirMenuPrincipal()
+    public override async Task Executar()
     {
-        Console.WriteLine("   ____      _       _       \r\n  / ___|___ (_)_ __ | |_   _ \r\n | |   / _ \\| | '_ \\| | | | |\r\n | |__| (_) | | | | | | |_| |\r\n  \\____\\___/|_|_| |_|_|\\__, |\r\n                       |___/ ");
+       await base.Executar();
         Console.WriteLine("Bem vindo! Selecione a operação que deseja!");
         Console.WriteLine("1. Cotar uma moeda");
         Console.WriteLine("2. Ver historico de moedas");
-        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : 0;
-        Console.Clear();
+        Console.WriteLine("0. Sair\n");
+        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : -1;
         switch (resposta)
         {
             case 1:
-                await MenuCotacao.MostrarMenuConsultar();
+                await new MenuCotacao().Executar();
                 break;
             case 2:
-                await MenuHistorico.MostrarHistorico();
+                await new MenuHistorico().Executar();
+                break;
+            case 0:
+                Console.WriteLine("Saindo...");
+                Thread.Sleep(3000);
                 break;
             default:
-                Console.WriteLine("Opção invalida");
-                await ExibirMenuPrincipal();
+                Console.WriteLine("\nOpção inválida, tente novamente!");
+                Thread.Sleep(3000);
+                Console.Clear();
+                await Executar();
                 break;
         }
     }
