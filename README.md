@@ -13,7 +13,7 @@ Aplicação de console em C# para cotar moedas e criptomoedas em tempo real, gua
 
 ## Sobre o projeto
 
-Coinly é um projeto de estudo que estou construindo e aprimorando conforme avanço nos meus estudos de C# (regex, LINQ, async/await, consumo de API, manipulação de arquivos). A ideia é que cada funcionalidade reflita um conceito que eu já entendi de verdade, não só copiado — então o projeto vai continuar evoluindo com o tempo.
+Coinly é um projeto de estudo sobre funcionalidades que aprendi em C# (regex, LINQ, async/await, consumo de API, manipulação de arquivos, herança). Cada funcionalidade reflete um conceito que eu realmente entendi, não só copiado.
 
 ## Funcionalidades
 
@@ -35,6 +35,7 @@ Coinly é um projeto de estudo que estou construindo e aprimorando conforme avan
 - LINQ para filtros, ordenação e agregações sobre o histórico (`GroupBy`, projeções, ordenações)
 - Leitura/escrita de arquivo CSV (`StreamReader` / `StreamWriter`)
 - `Environment.SpecialFolder` para guardar os dados em um caminho fixo e confiável, independente de onde o programa é executado
+- Herança e polimorfismo: os menus compartilham uma classe base abstrata (`Menu`), cada um com seu próprio `override` de `Executar()`
 
 ## API utilizada
 
@@ -61,8 +62,8 @@ dotnet run
 Coinly/
 ├── Chamadas/     # Chamadas HTTP para a API de cotações e moedas
 ├── Filtros/      # Filtros e ordenações LINQ sobre o histórico
-├── Funções/      # Leitura e escrita do arquivo CSV de histórico
-├── Menus/        # Fluxo de navegação do console
+├── Funções/      # Leitura/escrita de arquivo e validação de entrada (ValidadorEntrada)
+├── Menus/        # Classe base Menu (abstrata) + cada menu como override de Executar()
 ├── Modelos/      # Modelos de dados (Cotacao, MoedaAgrupada)
 ├── Services/      # Regras de negócio da consulta de cotação
 └── Program.cs    # Ponto de entrada
