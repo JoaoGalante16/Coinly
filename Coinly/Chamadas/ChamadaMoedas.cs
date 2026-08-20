@@ -2,7 +2,7 @@
 
 namespace Coinly.Chamadas;
 
-internal class ChamadaMoedas
+public class ChamadaMoedas
 {
 
     public static async Task<Dictionary<string, string>> CarregarMoedas()

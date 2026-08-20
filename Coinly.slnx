@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Coinly.Test/Coinly.Test.csproj" Id="76497d2c-cb9d-4eb6-a1d3-72e76718c96e" />
   <Project Path="Coinly/Coinly.csproj" />
 </Solution>

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Coinly.Modelos;
 
-internal class Cotacao
+public class Cotacao
 {
     [JsonPropertyName("code")]
     public string Sigla { get; set; }
@@ -28,12 +28,14 @@ internal class Cotacao
 
     public static Cotacao ConverterStringParaCotacao(string linha)
     {
+        if ( string.IsNullOrWhiteSpace(linha)) return null;
         string[] valores = linha.Split(',');
         var cotacaoMoeda = new Cotacao();
         cotacaoMoeda.Sigla = valores[0];
         cotacaoMoeda.Valor = double.Parse(valores[1], CultureInfo.InvariantCulture);
         cotacaoMoeda.DataHora = valores[2];
         cotacaoMoeda.Timestamp = long.Parse(valores[3]);
+       
         return cotacaoMoeda;
     }
 }

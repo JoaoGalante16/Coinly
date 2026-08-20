@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Coinly.Chamadas;
 
-internal class ChamadaCotacao
+public class ChamadaCotacao
 {
     public static async Task<Cotacao> ApiCotar(string moeda)
     {

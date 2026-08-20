@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Coinly.Menus;
 
-internal class MenuCotacao : Menu
+public class MenuCotacao : Menu
 {
     public override async Task Executar()
     {
@@ -20,12 +20,19 @@ internal class MenuCotacao : Menu
             foreach (Match match in matches)
             {
                 var moeda = match.Groups[1].Value;
-                await CotacaoService.ProcessarConsulta(moeda);
+                try
+                {
+                    await CotacaoService.ProcessarConsulta(moeda);
+                    Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
+                    Console.ReadKey();
+                    Console.Clear();
+                    await new MenuPrincipal().Executar();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Houve um erro\n detalhes: {ex.Message}");
+                }
             }
-            Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
-            Console.ReadKey();
-            Console.Clear();
-            await new MenuPrincipal().Executar();
         }
         else
         {

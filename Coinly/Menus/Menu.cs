@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Coinly.Menus;
 
-internal abstract class Menu
+public abstract class Menu
 { 
     public virtual async Task Executar()
     {

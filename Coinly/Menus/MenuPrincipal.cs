@@ -1,10 +1,10 @@
 ﻿namespace Coinly.Menus;
 
-internal class MenuPrincipal : Menu
+public class MenuPrincipal : Menu
 {
     public override async Task Executar()
     {
-       await base.Executar();
+        await base.Executar();
         Console.WriteLine("Bem vindo! Selecione a operação que deseja!");
         Console.WriteLine("1. Cotar uma moeda");
         Console.WriteLine("2. Ver historico de moedas");
@@ -20,11 +20,11 @@ internal class MenuPrincipal : Menu
                 break;
             case 0:
                 Console.WriteLine("Saindo...");
-                Thread.Sleep(3000);
+                await Task.Delay(3000);
                 break;
             default:
                 Console.WriteLine("\nOpção inválida, tente novamente!");
-                Thread.Sleep(3000);
+                await Task.Delay(3000);
                 Console.Clear();
                 await Executar();
                 break;

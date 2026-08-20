@@ -2,7 +2,7 @@
 
 namespace Coinly.Filtros;
 
-internal class LinqOrder
+public class LinqOrder
 {
     public static void OrdenarPorMoedas(List<Cotacao> listaDeMoedas)
     {

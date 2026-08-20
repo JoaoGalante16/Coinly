@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Coinly.Funções;
 
-internal class ValidadorEntrada
+public class ValidadorEntrada
 {
     public static async Task<MatchCollection> ValidarEntrada(string entrada)
     {
@@ -22,7 +22,7 @@ internal class ValidadorEntrada
         {
             Console.WriteLine("\nEntrada inválida!");
             Console.WriteLine("Voltando ao menu...");
-            Thread.Sleep(2000);
+            await Task.Delay(2000);
             Console.Clear();
             return null;
         }

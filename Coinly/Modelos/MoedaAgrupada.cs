@@ -1,6 +1,6 @@
 ﻿namespace Coinly.Modelos;
 
-internal class MoedaAgrupada
+public class MoedaAgrupada
 {
     public string Sigla { get; set; }
     public List<Cotacao> Cotacoes { get; set; }

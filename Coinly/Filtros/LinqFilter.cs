@@ -2,7 +2,7 @@
 
 namespace Coinly.Filtros;
 
-internal static class LinqFilter
+public static class LinqFilter
 {
     public static void FiltrarMoedaData(List<Cotacao> listaDeMoedas, string moeda)
     {
