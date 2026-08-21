@@ -7,13 +7,6 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit.Sdk;
 
-
-//Input null → retorna null
-//Lista vazia (new List<Cotacao>()) → retorna lista vazia, sem estourar exceção
-//Agrupamento por Sigla — monta cotações de 2 moedas diferentes (ex: 2 de BTC, 1 de ETH) → confere que saem 2 grupos, com os Sigla certos
-//Ordenação por Timestamp decrescente — dentro de um mesmo Sigla, cria cotações com Timestamps fora de ordem (ex: 100, 300, 200) → confere que saem ordenadas decrescente (300, 200, 100)
-//Total desbalanceado — grupos de tamanhos diferentes (ex: 3 de BTC, 1 de ETH) → confere que Total de BTC é 3 e de ETH é 1, não a contagem da lista inteira
-
 namespace Coinly.Test
 {
     public class LinqOrderOrdenarParaEscreverEmJson

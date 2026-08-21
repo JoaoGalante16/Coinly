@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Coinly.Test
 {
+    [Collection("Console")]
     public class CotacaoMostrarCotacao
     {
         [Fact]

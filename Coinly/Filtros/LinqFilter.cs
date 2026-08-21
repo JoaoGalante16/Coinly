@@ -47,10 +47,10 @@ public static class LinqFilter
         {
             Console.WriteLine($"\nResumo {moeda}\n");
             var variacao = moedaespecifica.First().Valor - moedaespecifica.Last().Valor;
-            Console.WriteLine($"Maior cotação já resgistrada de: {moedaespecifica.Max(c => c.Valor)}");
-            Console.WriteLine($"Menor cotação já resgistrada de: {moedaespecifica.Min(c => c.Valor)}");
-            Console.WriteLine($"Valor Medio das cotações de: {moedaespecifica.Average(c => c.Valor)}");
-            Console.WriteLine($"Variação entre primeira e ultima cotação de: {variacao}");
+            Console.WriteLine($"Maior cotação já resgistrada: {moedaespecifica.Max(c => c.Valor)}");
+            Console.WriteLine($"Menor cotação já resgistrada: {moedaespecifica.Min(c => c.Valor)}");
+            Console.WriteLine($"Valor Medio das cotações: {moedaespecifica.Average(c => c.Valor)}");
+            Console.WriteLine($"Variação entre primeira e ultima cotação: {variacao}");
         }
         else Console.WriteLine($"\nNão existe cotações feita da {moeda}\n");
 
