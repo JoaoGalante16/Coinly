@@ -25,6 +25,7 @@ public class LinqOrder
                 }
             }
         }
+        
     }
 
     public static List<MoedaAgrupada> OrdenarParaEscreverEmJson(List<Cotacao> cotacoes)
