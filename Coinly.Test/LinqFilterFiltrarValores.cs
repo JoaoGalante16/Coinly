@@ -44,6 +44,7 @@ namespace Coinly.Test
                 new Cotacao { Sigla = "BTC", Timestamp = 200, Valor = 2000, DataHora = "2026-06-22" },
             };
 
+            var resumoEsperado = "\nResumo BTC\n";
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
 
@@ -52,6 +53,7 @@ namespace Coinly.Test
             string resposta = stringWriter.ToString();
 
             //a
+            Assert.Contains(resumoEsperado, resposta);
             Assert.Contains("Maior cotação já resgistrada: 3000", resposta);
             Assert.Contains("Menor cotação já resgistrada: 1000", resposta);
             Assert.Contains("Valor Medio das cotações: 2000", resposta);

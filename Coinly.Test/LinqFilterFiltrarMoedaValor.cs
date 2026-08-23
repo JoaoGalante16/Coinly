@@ -59,5 +59,29 @@ namespace Coinly.Test
             Assert.True(posicaoMaiorValor < posicaoValorIntermediario);
             Assert.True(posicaoValorIntermediario < posicaoMenorValor);
         }
+
+        [Fact]
+        public void ImprimeCabecalhoEMensagemQuandoMoedaEncontrada()
+        {
+            //a
+            var cotacoes = new List<Cotacao>
+            {
+                new Cotacao { Sigla = "BTC", Timestamp = 100, Valor = 1000, DataHora = "2026-06-20" },
+            };
+
+            var mensagemEsperada = "\nCotações da BTC:\n";
+            var cabecalhoEsperado = $"{"Moeda",-10}{"Valor",-15}{"Data",-15}";
+
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            //a
+            LinqFilter.FiltrarMoedaValor(cotacoes, "BTC");
+            string resposta = stringWriter.ToString();
+
+            //a
+            Assert.Contains(mensagemEsperada, resposta);
+            Assert.Contains(cabecalhoEsperado, resposta);
+        }
     }
 }

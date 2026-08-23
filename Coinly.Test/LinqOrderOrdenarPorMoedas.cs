@@ -4,6 +4,7 @@ using Coinly.Modelos;
 
 namespace Coinly.Test
 {
+    [Collection("Console")]
     public class LinqOrderOrdenarPorMoedas
     {
         [Fact]
@@ -100,6 +101,52 @@ namespace Coinly.Test
             var posicaoMaisAntiga = resposta.IndexOf("2026-06-20");
             Assert.True(posicaoMaisRecente < posicaoIntermediaria);
             Assert.True(posicaoIntermediaria < posicaoMaisAntiga);
+        }
+
+        [Fact]
+        public void ImprimeBlocosOrdenadosPorSiglaCrescente()
+        {
+            //a
+            var cotacoes = new List<Cotacao>
+            {
+                new Cotacao { Sigla = "USD", Timestamp = 100, Valor = 1.0, DataHora = "2026-06-20" },
+                new Cotacao { Sigla = "BTC", Timestamp = 100, Valor = 1.0, DataHora = "2026-06-20" },
+            };
+
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            //a
+            LinqOrder.OrdenarPorMoedas(cotacoes);
+            string resposta = stringWriter.ToString();
+
+            //a
+            var posicaoBTC = resposta.IndexOf("BTC");
+            var posicaoUSD = resposta.IndexOf("USD");
+
+            Assert.True(posicaoBTC < posicaoUSD);
+        }
+
+        [Fact]
+        public void ImprimeCabecalhoDaTabelaQuandoExisteCotacao()
+        {
+            //a
+            var cotacoes = new List<Cotacao>
+            {
+                new Cotacao { Sigla = "BTC", Timestamp = 100, Valor = 1.0, DataHora = "2026-06-20" },
+            };
+
+            var cabecalhoEsperado = $"{"Moeda",-10}{"Valor",-15}{"Data",-15}";
+
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            //a
+            LinqOrder.OrdenarPorMoedas(cotacoes);
+            string resposta = stringWriter.ToString();
+
+            //a
+            Assert.Contains(cabecalhoEsperado, resposta);
         }
     }
 }

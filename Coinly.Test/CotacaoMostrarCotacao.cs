@@ -9,7 +9,7 @@ namespace Coinly.Test
     public class CotacaoMostrarCotacao
     {
         [Fact]
-        public void ValidaMostrarCotacaoQaundoDadosCertos()
+        public void ValidaMostrarCotacaoQuandoDadosCertos()
         {
             //a
             var cotacao = new Cotacao() { Sigla = "BTC", Valor = 5500.00, DataHora = "2026-07-16"};
@@ -29,7 +29,7 @@ namespace Coinly.Test
         [InlineData("BTC123456789", 5500.00 , "2026-07-16")]
         [InlineData("BTC", 5500.00, "2026-07-16123456789123456789")]
         [InlineData("BTC", 5500550005550005550005.00, "2026-07-16")]
-        public void ValidaMostarCotacaoQaundoCampoMaiorQuePadding(string sigla, double valor, string data)
+        public void ValidaMostarCotacaoQuandoCampoMaiorQuePadding(string sigla, double valor, string data)
         {
             var cotacao = new Cotacao() { Sigla = sigla, Valor = valor, DataHora = data };
             var stringWriter = new StringWriter();

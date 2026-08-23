@@ -36,6 +36,8 @@ Coinly é um projeto de estudo sobre funcionalidades que aprendi em C# (regex, L
 - Leitura/escrita de arquivo CSV (`StreamReader` / `StreamWriter`)
 - `Environment.SpecialFolder` para guardar os dados em um caminho fixo e confiável, independente de onde o programa é executado
 - Herança e polimorfismo: os menus compartilham uma classe base abstrata (`Menu`), cada um com seu próprio `override` de `Executar()`
+- `async`/`await` na leitura/escrita do histórico, com `try`/`catch` restrito ao trecho que realmente pode falhar
+- xUnit v3, Bogus e Stryker.NET para testes de unidade e mutation testing
 
 ## API utilizada
 
@@ -60,11 +62,13 @@ dotnet run
 
 ```
 Coinly/
-├── Chamadas/     # Chamadas HTTP para a API de cotações e moedas
-├── Filtros/      # Filtros e ordenações LINQ sobre o histórico
-├── Funções/      # Leitura/escrita de arquivo e validação de entrada (ValidadorEntrada)
-├── Menus/        # Classe base Menu (abstrata) + cada menu como override de Executar()
-├── Modelos/      # Modelos de dados (Cotacao, MoedaAgrupada)
-├── Services/      # Regras de negócio da consulta de cotação
-└── Program.cs    # Ponto de entrada
+├── Coinly/
+│   ├── Chamadas/     # Chamadas HTTP para a API de cotações e moedas
+│   ├── Filtros/      # Filtros e ordenações LINQ sobre o histórico
+│   ├── Funções/      # Leitura/escrita de arquivo e validação de entrada (ValidadorEntrada)
+│   ├── Menus/        # Classe base Menu (abstrata) + cada menu como override de Executar()
+│   ├── Modelos/      # Modelos de dados (Cotacao, MoedaAgrupada)
+│   ├── Services/     # Regras de negócio da consulta de cotação
+│   └── Program.cs    # Ponto de entrada
+└── Coinly.Test/      # Testes de unidade (xUnit v3 + Bogus) dos Filtros e Modelos
 ```
