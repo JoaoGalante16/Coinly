@@ -1,5 +1,5 @@
-using Coinly.Filtros;
 using Coinly.Modelos;
+using Coinly.Filtros;
 
 namespace Coinly.Test
 {

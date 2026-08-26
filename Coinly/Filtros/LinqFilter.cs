@@ -1,4 +1,5 @@
 ﻿using Coinly.Modelos;
+using Coinly.Services;
 
 namespace Coinly.Filtros;
 
@@ -6,38 +7,12 @@ public static class LinqFilter
 {
     public static void FiltrarMoedaData(List<Cotacao> listaDeMoedas, string moeda)
     {
-        var cotacoesPorMoeda = listaDeMoedas.Where(c => c.Sigla.Equals(moeda))
-                .OrderByDescending(lista => lista.Timestamp)
-                .ToList();
-        if (cotacoesPorMoeda.Count > 0)
-        {
-            Console.WriteLine($"\nCotações da {moeda}:\n");
-            Cotacao.MostrarCotacaoTabela();
-            foreach (var c in cotacoesPorMoeda)
-            {
-                c.MostrarCotacao();
-            }
-        }
-        else Console.WriteLine($"\nNão existe cotações feita da {moeda}\n");
-
+        LinqFilterService.FiltrarMoedaPorParametro(listaDeMoedas, moeda, c => c.Timestamp);
     }
 
     public static void FiltrarMoedaValor(List<Cotacao> listaDeMoedas, string moeda)
     {
-        var cotacoesPorMoeda = listaDeMoedas.Where(listaDeMoedas => listaDeMoedas.Sigla.Equals(moeda))
-                .OrderByDescending(lista => lista.Valor)
-                .ToList();
-        if (cotacoesPorMoeda.Count > 0)
-        {
-            Console.WriteLine($"\nCotações da {moeda}:\n");
-            Cotacao.MostrarCotacaoTabela();
-            foreach (var c in cotacoesPorMoeda)
-            {
-                c.MostrarCotacao();
-            }
-        }
-        else Console.WriteLine($"\nNão existe cotações feita da {moeda}\n");
-
+        LinqFilterService.FiltrarMoedaPorParametro(listaDeMoedas, moeda, c => c.Valor);
     }
 
     public static void FiltrarValores(List<Cotacao> listaDeMoedas, string moeda)

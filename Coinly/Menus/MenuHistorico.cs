@@ -1,5 +1,5 @@
 ﻿using Coinly.Filtros;
-using Coinly.Funções;
+using Coinly.Utilities;
 
 namespace Coinly.Menus;
 
@@ -10,11 +10,11 @@ public class MenuHistorico : Menu
         await base.Executar();
         try
         {
-            var listaDeMoedas = await LerArquivo.LerOArquivo();
+            var listaDeMoedas = await LeitorArquivo.LerOArquivo();
             Console.WriteLine("1. Mostrar todas cotações");
             Console.WriteLine("2. Pesquisar uma moeda");
             Console.WriteLine("0. Voltar ao menu principal\n");
-            var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : -1;
+            var resposta = LeitorEntrada.LerOpcaoNumerica();
             if (listaDeMoedas is null)
             {
                 Console.WriteLine("Lista nula");
@@ -31,10 +31,9 @@ public class MenuHistorico : Menu
                     var listaJson = LinqOrder.OrdenarParaEscreverEmJson(listaDeMoedas);
                     try
                     {
-                        var arquivoJson = await EscreverArquivo.EscreverNoArquivoJson(listaJson);
+                        var arquivoJson = await EscritorArquivo.EscreverNoArquivoJson(listaJson);
                         Console.WriteLine(arquivoJson);
-                        Console.WriteLine("Digite qualquer tecla para voltar ao menu anterior!");
-                        Console.ReadKey();
+                        ExibirMensagemVoltarAoMenu();
                         await Executar();
                         break;
                     }
@@ -51,10 +50,7 @@ public class MenuHistorico : Menu
                     await new MenuPrincipal().Executar();
                     break;
                 default:
-                    Console.WriteLine("Entrada inválida! Tente novamente!");
-                    await Task.Delay(2000);
-                    Console.Clear();
-                    await Executar();
+                    await ExibirMensagemEntradaInvalida();
                     break;
             }
         }

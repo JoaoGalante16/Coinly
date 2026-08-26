@@ -1,5 +1,5 @@
-﻿using Coinly.Funções;
-using Coinly.Services;
+﻿using Coinly.Services;
+using Coinly.Utilities;
 using System.Text.RegularExpressions;
 
 namespace Coinly.Menus;
@@ -9,10 +9,8 @@ public class MenuCotacao : Menu
     public override async Task Executar()
     {
         await base.Executar();
-        Console.WriteLine("Digite a(s) sigla(s) da(s) moeda(s) que deseja cotar: ");
-        Console.WriteLine("Exemplo: BTC, USD, ETH\n");
-        var entrada = Console.ReadLine().ToUpper();
-        var matches = await ValidadorEntrada.ValidarEntrada(entrada);
+        ExibirMensagemDeBusca();
+        var matches = await LeitorEntrada.LerEValidarBusca();
         Console.Clear();
         if (matches is not null)
         {
@@ -23,9 +21,7 @@ public class MenuCotacao : Menu
                 try
                 {
                     await CotacaoService.ProcessarConsulta(moeda);
-                    Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
-                    Console.ReadKey();
-                    Console.Clear();
+                    ExibirMensagemVoltarAoMenu();
                     await new MenuPrincipal().Executar();
                 }
                 catch (Exception ex)

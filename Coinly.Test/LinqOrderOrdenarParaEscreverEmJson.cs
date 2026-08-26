@@ -1,11 +1,11 @@
 ﻿using Bogus;
-using Coinly.Filtros;
 using Coinly.Modelos;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit.Sdk;
+using Coinly.Filtros;
 
 namespace Coinly.Test
 {

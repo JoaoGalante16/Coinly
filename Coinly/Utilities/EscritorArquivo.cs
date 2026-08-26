@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.Text.Json;
 
-namespace Coinly.Funções;
+namespace Coinly.Utilities;
 
-public class EscreverArquivo
+public class EscritorArquivo
 {
     
     public static async Task EscreverNoArquivoCSV(Cotacao cotacao)
@@ -18,7 +18,6 @@ public class EscreverArquivo
             using (var escritor = new StreamWriter(fs))
             {
                 await escritor.WriteLineAsync($"{cotacao.Sigla},{cotacao.Valor.ToString(CultureInfo.InvariantCulture)},{cotacao.DataHora},{cotacao.Timestamp}");
-
             }
         }
         catch (Exception ex)

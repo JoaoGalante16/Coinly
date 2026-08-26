@@ -1,4 +1,6 @@
-﻿namespace Coinly.Menus;
+﻿using Coinly.Utilities;
+
+namespace Coinly.Menus;
 
 public class MenuPrincipal : Menu
 {
@@ -9,7 +11,7 @@ public class MenuPrincipal : Menu
         Console.WriteLine("1. Cotar uma moeda");
         Console.WriteLine("2. Ver historico de moedas");
         Console.WriteLine("0. Sair\n");
-        var resposta = int.TryParse(Console.ReadLine(), out int r) ? r : -1;
+        var resposta = LeitorEntrada.LerOpcaoNumerica();
         switch (resposta)
         {
             case 1:
@@ -23,10 +25,7 @@ public class MenuPrincipal : Menu
                 await Task.Delay(3000);
                 break;
             default:
-                Console.WriteLine("\nOpção inválida, tente novamente!");
-                await Task.Delay(3000);
-                Console.Clear();
-                await Executar();
+                await ExibirMensagemEntradaInvalida();
                 break;
         }
     }

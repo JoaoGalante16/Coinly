@@ -1,4 +1,5 @@
-﻿using Coinly.Funções;
+﻿using Coinly.Filtros;
+using Coinly.Utilities;
 using System.Text.RegularExpressions;
 
 namespace Coinly.Menus;
@@ -10,12 +11,10 @@ public class MenuMoeda : Menu
     {
         try
         {
+            var listaDeMoedas = await LeitorArquivo.LerOArquivo();
             await base.Executar();
-            var listaDeMoedas = await LerArquivo.LerOArquivo();
-            Console.WriteLine("Digite as siglas das moedas que deseja procurar:");
-            Console.WriteLine("Exemplo: BTC, USD, ETH\n");
-            var entrada = Console.ReadLine().ToUpper();
-            var matches = await ValidadorEntrada.ValidarEntrada(entrada);
+            ExibirMensagemDeBusca();
+            var matches = await LeitorEntrada.LerEValidarBusca();
             if (matches is not null)
             {
                 await base.Executar();
@@ -23,48 +22,42 @@ public class MenuMoeda : Menu
                 Console.WriteLine("2. Todas cotações por data");
                 Console.WriteLine("3. Ver resumo");
                 Console.WriteLine("0. Voltar ao menu anterior\n");
-                var resposta2 = int.TryParse(Console.ReadLine(), out int r) ? r : -1;
+                var resposta = LeitorEntrada.LerOpcaoNumerica();
                 if (listaDeMoedas is null)
                 {
                     Console.WriteLine("Lista nula");
                     await Task.Delay(2000);
-                    resposta2 = 0;
+                    resposta = 0;
                 }
                 Console.Clear();
 
-                switch (resposta2)
+                switch (resposta)
                 {
                     case 1:
                         foreach (Match match in matches)
                         {
                             var moeda = match.Groups[1].Value;
-                            Filtros.LinqFilter.FiltrarMoedaValor(listaDeMoedas, moeda);
+                            LinqFilter.FiltrarMoedaValor(listaDeMoedas, moeda);
                         }
-                        Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
-                        Console.ReadKey();
-                        Console.Clear();
+                        ExibirMensagemVoltarAoMenu();
                         await new MenuHistorico().Executar();
                         break;
                     case 2:
                         foreach (Match match in matches)
                         {
                             var moeda = match.Groups[1].Value;
-                            Filtros.LinqFilter.FiltrarMoedaData(listaDeMoedas, moeda);
+                            LinqFilter.FiltrarMoedaData(listaDeMoedas, moeda);
                         }
-                        Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
-                        Console.ReadKey();
-                        Console.Clear();
+                        ExibirMensagemVoltarAoMenu();
                         await new MenuHistorico().Executar();
                         break;
                     case 3:
                         foreach (Match match in matches)
                         {
                             var moeda = match.Groups[1].Value;
-                            Filtros.LinqFilter.FiltrarValores(listaDeMoedas, moeda);
+                            LinqFilter.FiltrarValores(listaDeMoedas, moeda);
                         }
-                        Console.WriteLine("\nDigite qualquer tecla para voltar ao menu!");
-                        Console.ReadKey();
-                        Console.Clear();
+                        ExibirMensagemVoltarAoMenu();
                         await new MenuHistorico().Executar();
                         break;
                     case 0:
@@ -72,10 +65,7 @@ public class MenuMoeda : Menu
                         await new MenuHistorico().Executar();
                         break;
                     default:
-                        Console.WriteLine("Entrada inválida! Tente Novamente!");
-                        await Task.Delay(2000);
-                        Console.Clear();
-                        await Executar();
+                        await ExibirMensagemEntradaInvalida();
                         break;
                 }
             }
@@ -88,7 +78,7 @@ public class MenuMoeda : Menu
         {
             Console.WriteLine($"Houve um erro, {ex.Message}");
         }
-        
+
     }
 }
 

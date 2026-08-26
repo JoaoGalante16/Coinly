@@ -1,13 +1,14 @@
-﻿using System.Text.Json;
+﻿using Coinly.Utilities;
+using System.Text.Json;
 
-namespace Coinly.Chamadas;
+namespace Coinly.Clients;
 
-public class ChamadaMoedas
+public class ApiListaMoedasClient
 {
 
     public static async Task<Dictionary<string, string>> CarregarMoedas()
     {
-        using (HttpClient client = new HttpClient())
+        var client = new CoinlyHttpClient().RetornaClient();
             try
             {
                 string resposta = await client.GetStringAsync("https://economia.awesomeapi.com.br/json/available/uniq");
@@ -16,36 +17,22 @@ public class ChamadaMoedas
                 return resultado;
             }
 
-            catch(HttpRequestException ex)
-            {
-                if (ex.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
-                {
-                    Console.WriteLine("Limite de requisições atingido. Aguarde antes de tentar novamente.");
-                    return null;
-                }
-                else if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    Console.WriteLine("A URL da API ou o recurso solicitado não foi encontrado.");
-                    return null;
-                }
-                else
-                {
-                    Console.WriteLine($"Erro: {ex.Message}");
-                    return null;
-                }
-
-            }
-
-            catch (JsonException ex)
-            {
-            Console.WriteLine("Erro de parse/formato de JSON.");
+        catch (HttpRequestException ex)
+        {
+            TratadorExceptionAPI.Tratar(ex);
             return null;
-            }
+        }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
+        catch (JsonException ex)
+        {
+            TratadorExceptionAPI.Tratar(ex);
+            return null;
+        }
+
+        catch (Exception ex)
+        {
+            TratadorExceptionAPI.Tratar(ex);
+            return null;
+        }
     }
 }

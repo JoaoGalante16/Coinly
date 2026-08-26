@@ -13,7 +13,6 @@ public class LinqOrder
                 .GroupBy(c => c.Sigla)
                 .ToList();
 
-
             foreach (var moeda in ListaOrdenada)
             {
                 var borda = "".PadRight(50, '=');
@@ -25,7 +24,7 @@ public class LinqOrder
                 }
             }
         }
-        
+
     }
 
     public static List<MoedaAgrupada> OrdenarParaEscreverEmJson(List<Cotacao> cotacoes)

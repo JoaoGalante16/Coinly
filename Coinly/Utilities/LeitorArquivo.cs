@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-namespace Coinly.Funções;
+namespace Coinly.Utilities;
 
-public class LerArquivo
+public class LeitorArquivo
 {
 
     public static async Task<List<Cotacao>> LerOArquivo()

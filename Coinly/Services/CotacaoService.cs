@@ -1,6 +1,6 @@
-﻿using Coinly.Chamadas;
-using Coinly.Funções;
+﻿using Coinly.Clients;
 using Coinly.Modelos;
+using Coinly.Utilities;
 
 namespace Coinly.Services;
 
@@ -10,18 +10,18 @@ public class CotacaoService
     {
         try
         {
-            var moedas = await ChamadaMoedas.CarregarMoedas();
+            var moedas = await ApiListaMoedasClient.CarregarMoedas();
             if (moedas is not null)
             {
                 if (moedas.ContainsKey(moeda))
                 {
-                    var cotacao = await ChamadaCotacao.ApiCotar(moeda);
+                    var cotacao = await CotacaoApiClient.ApiCotar(moeda);
                     if (cotacao is not null)
                     {
                         Cotacao.MostrarCotacaoTabela();
                         cotacao.MostrarCotacao();
                         Console.WriteLine("--------------------------------------------");
-                        await EscreverArquivo.EscreverNoArquivoCSV(cotacao);
+                        await EscritorArquivo.EscreverNoArquivoCSV(cotacao);
                     }
                 }
                 else
