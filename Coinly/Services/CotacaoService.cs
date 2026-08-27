@@ -11,29 +11,31 @@ public class CotacaoService
         try
         {
             var moedas = await ApiListaMoedasClient.CarregarMoedas();
-            if (moedas is not null)
+            if (moedas is null)
             {
-                if (moedas.ContainsKey(moeda))
-                {
-                    var cotacao = await CotacaoApiClient.ApiCotar(moeda);
-                    if (cotacao is not null)
-                    {
-                        Cotacao.MostrarCotacaoTabela();
-                        cotacao.MostrarCotacao();
-                        Console.WriteLine("--------------------------------------------");
-                        await EscritorArquivo.EscreverNoArquivoCSV(cotacao);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"\n{moeda} não disponível\n");
-                }
+                Console.WriteLine($"\n{moeda} não disponível\n");
+                return;
             }
+            if (!moedas.ContainsKey(moeda))
+            {
+                Console.WriteLine($"\n{moeda} não disponível\n");
+                return;
+            }
+
+            var cotacao = await CotacaoApiClient.ApiCotar(moeda);
+            if (cotacao is null)
+            {
+                return;
+            }
+            Cotacao.MostrarCotacaoTabela();
+            cotacao.MostrarCotacao();
+            Console.WriteLine("--------------------------------------------");
+            await EscritorArquivo.EscreverNoArquivoCSV(cotacao);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Houve um erro: {ex.Message}");
         }
-        
+
     }
 }

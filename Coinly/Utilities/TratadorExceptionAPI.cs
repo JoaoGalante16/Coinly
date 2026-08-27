@@ -8,32 +8,37 @@ namespace Coinly.Utilities
     internal static class TratadorExceptionAPI
     {
 
-        public static void Tratar(HttpRequestException ex)
+        public static Task<T> Tratar<T>(HttpRequestException ex)
         {
             if (ex.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
             {
                 Console.WriteLine("Limite de requisições atingido. Aguarde antes de tentar novamente.");
+                return Task.FromResult(default(T));
             }
 
             else if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 Console.WriteLine("A URL da API ou o recurso solicitado não foi encontrado.");
+                return Task.FromResult(default(T));
             }
 
             else
             {
                 Console.WriteLine($"Erro: {ex.Message}");
+                return Task.FromResult(default(T));
             }
         }
 
-        public static void Tratar(JsonException ex)
+        public static Task<T> Tratar<T>(JsonException ex)
         {
             Console.WriteLine("Erro de parse/formato de JSON.");
+            return Task.FromResult(default(T));
         }
 
-        public static void Tratar(Exception ex)
+        public static Task<T> Tratar<T>(Exception ex)
         {
             Console.WriteLine($"Erro: {ex.Message}");
+            return Task.FromResult(default(T));
         }
 
 

@@ -13,7 +13,7 @@ public class EscritorArquivo
         {
             var pasta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly");
             Directory.CreateDirectory(pasta);
-            var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly", "Cotacoes.csv");
+            var nomeArquivo = CaminhoPadraoArquivo.RetornaCaminhoArquivo();
             using (var fs = new FileStream(nomeArquivo, FileMode.Append))
             using (var escritor = new StreamWriter(fs))
             {

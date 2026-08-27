@@ -63,12 +63,12 @@ dotnet run
 ```
 Coinly/
 ├── Coinly/
-│   ├── Chamadas/     # Chamadas HTTP para a API de cotações e moedas
-│   ├── Filtros/      # Filtros e ordenações LINQ sobre o histórico
-│   ├── Funções/      # Leitura/escrita de arquivo e validação de entrada (ValidadorEntrada)
+│   ├── Clients/      # CoinlyHttpClient (HttpClient compartilhado) + clientes da API (CotacaoApiClient, ApiListaMoedasClient)
+│   ├── Filtros/      # Filtros e ordenações LINQ sobre o histórico (LinqOrder, LinqFilter)
 │   ├── Menus/        # Classe base Menu (abstrata) + cada menu como override de Executar()
 │   ├── Modelos/      # Modelos de dados (Cotacao, MoedaAgrupada)
-│   ├── Services/     # Regras de negócio da consulta de cotação
+│   ├── Services/     # Regras de negócio (CotacaoService, LinqFilterService)
+│   ├── Utilities/    # Leitura/escrita de arquivo, validação de entrada, caminho padrão e tratamento de exceção da API
 │   └── Program.cs    # Ponto de entrada
 └── Coinly.Test/      # Testes de unidade (xUnit v3 + Bogus) dos Filtros e Modelos
 ```

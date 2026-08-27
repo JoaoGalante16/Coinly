@@ -14,7 +14,7 @@ public class LeitorArquivo
         try
         {
             List<Cotacao> listaMoedas = new();
-            var nomeArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Coinly", "Cotacoes.csv");
+            var nomeArquivo = CaminhoPadraoArquivo.RetornaCaminhoArquivo();
             if (!File.Exists(nomeArquivo))
             {
                 return listaMoedas;

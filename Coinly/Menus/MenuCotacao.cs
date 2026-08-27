@@ -22,13 +22,13 @@ public class MenuCotacao : Menu
                 {
                     await CotacaoService.ProcessarConsulta(moeda);
                     ExibirMensagemVoltarAoMenu();
-                    await new MenuPrincipal().Executar();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Houve um erro\n detalhes: {ex.Message}");
                 }
             }
+            await new MenuPrincipal().Executar();
         }
         else
         {
