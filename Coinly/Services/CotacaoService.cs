@@ -8,6 +8,7 @@ public class CotacaoService
 {
     public static async Task ProcessarConsulta(string moeda)
     {
+        var client = new CoinlyHttpClientFactory().CreateClient();
         try
         {
             var moedas = await ApiListaMoedasClient.CarregarMoedas();
@@ -22,7 +23,7 @@ public class CotacaoService
                 return;
             }
 
-            var cotacao = await CotacaoApiClient.ApiCotar(moeda);
+            var cotacao = await ApiCotacaoClient.ApiCotar(moeda, client);
             if (cotacao is null)
             {
                 return;

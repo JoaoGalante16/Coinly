@@ -4,11 +4,10 @@ using System.Text.Json;
 
 namespace Coinly.Clients;
 
-public class CotacaoApiClient
+public class ApiCotacaoClient
 {
-    public static async Task<Cotacao> ApiCotar(string moeda)
+    public static async Task<Cotacao> ApiCotar(string moeda, HttpClient client)
     {
-        var client = new CoinlyHttpClient().RetornaClient();
         try
         {
             string resposta = await client.GetStringAsync($"https://economia.awesomeapi.com.br/json/last/{moeda}-BRL");

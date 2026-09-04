@@ -9,7 +9,7 @@ public class ApiListaMoedasClient
 
     public static async Task<Dictionary<string, string>> CarregarMoedas()
     {
-        var client = new CoinlyHttpClient().RetornaClient();
+        var client = new CoinlyHttpClientFactory().CreateClient();
         try
         {
             string resposta = await client.GetStringAsync("https://economia.awesomeapi.com.br/json/available/uniq");

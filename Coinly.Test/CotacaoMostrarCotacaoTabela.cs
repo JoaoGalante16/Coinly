@@ -9,10 +9,11 @@ namespace Coinly.Test
         public void ImprimeCabecalhoComFormatoCorreto()
         {
             //a
-            var cabecalhoEsperado = $"{"Moeda",-10}{"Valor",-15}{"Data",-15}\r\n";
+            var cabecalhoEsperado = $"{"Moeda",-10}{"Valor",-15}{"Data",-15}{Environment.NewLine}";
 
             var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
+            string teste;
 
             //a
             Cotacao.MostrarCotacaoTabela();
