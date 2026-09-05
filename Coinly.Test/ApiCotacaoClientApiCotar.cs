@@ -6,6 +6,7 @@ using Xunit.Sdk;
 
 namespace Coinly.Test.builder;
 
+[Collection("Console")]
 public class ApiCotacaoClientApiCotar
 {
     [Fact]
@@ -62,7 +63,7 @@ public class ApiCotacaoClientApiCotar
     }
 
     [Fact]
-    public async Task VerificaQualAUrlChamada()
+    public async Task VerificaQualUrlChamada()
     {
         //a
         var httpClient = HttpclientMoqBuilder.GetMock("{\n  \"USDBRL\": {\n    \"code\": \"USD\",\n    \"bid\": \"5.20\",\n    \"create_date\": \"2026-09-04 10:00:00\",\n    \"timestamp\": \"1234567890\"\n  }\n}", HttpStatusCode.OK, out var handlerMock);
@@ -71,7 +72,11 @@ public class ApiCotacaoClientApiCotar
         var resultado = await ApiCotacaoClient.ApiCotar("usd", httpClient.Object);
         
         //a
-        handlerMock.Protected().Verify("SendAsync",Times.Once(),ItExpr.IsAny<HttpRequestMessage>(),ItExpr.IsAny<CancellationToken>());
-        
+        handlerMock.Protected().Verify(
+            "SendAsync",
+            Times.Once(),
+            ItExpr.Is<HttpRequestMessage>(req => req.RequestUri.ToString() == "https://economia.awesomeapi.com.br/json/last/usd-BRL"),
+            ItExpr.IsAny<CancellationToken>()
+        );
     }
 }

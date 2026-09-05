@@ -6,12 +6,11 @@ namespace Coinly.Services;
 
 public class CotacaoService
 {
-    public static async Task ProcessarConsulta(string moeda)
+    public static async Task ProcessarConsulta(string moeda, HttpClient client)
     {
-        var client = new CoinlyHttpClientFactory().CreateClient();
         try
         {
-            var moedas = await ApiListaMoedasClient.CarregarMoedas();
+            var moedas = await ApiListaMoedasClient.CarregarMoedas(client);
             if (moedas is null)
             {
                 Console.WriteLine($"\n{moeda} não disponível\n");

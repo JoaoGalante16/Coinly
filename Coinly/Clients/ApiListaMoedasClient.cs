@@ -7,9 +7,8 @@ namespace Coinly.Clients;
 public class ApiListaMoedasClient
 {
 
-    public static async Task<Dictionary<string, string>> CarregarMoedas()
+    public static async Task<Dictionary<string, string>> CarregarMoedas(HttpClient client)
     {
-        var client = new CoinlyHttpClientFactory().CreateClient();
         try
         {
             string resposta = await client.GetStringAsync("https://economia.awesomeapi.com.br/json/available/uniq");
