@@ -38,6 +38,7 @@ Coinly é um projeto de estudo sobre funcionalidades que aprendi em C# (regex, L
 - Herança e polimorfismo: os menus compartilham uma classe base abstrata (`Menu`), cada um com seu próprio `override` de `Executar()`
 - `async`/`await` na leitura/escrita do histórico, com `try`/`catch` restrito ao trecho que realmente pode falhar
 - xUnit v3, Bogus e Stryker.NET para testes de unidade e mutation testing
+- Moq para isolar dependências externas em teste: `HttpMessageHandler` mockado simula respostas da API sem chamada de rede real, e `EscritorArquivo` (método `virtual`) mockado evita escrita real em disco
 
 ## API utilizada
 
@@ -63,12 +64,12 @@ dotnet run
 ```
 Coinly/
 ├── Coinly/
-│   ├── Clients/      # CoinlyHttpClient (HttpClient compartilhado) + clientes da API (CotacaoApiClient, ApiListaMoedasClient)
+│   ├── Clients/      # CoinlyHttpClientFactory (IHttpClientFactory) + clientes da API (ApiCotacaoClient, ApiListaMoedasClient)
 │   ├── Filtros/      # Filtros e ordenações LINQ sobre o histórico (LinqOrder, LinqFilter)
 │   ├── Menus/        # Classe base Menu (abstrata) + cada menu como override de Executar()
 │   ├── Modelos/      # Modelos de dados (Cotacao, MoedaAgrupada)
 │   ├── Services/     # Regras de negócio (CotacaoService, LinqFilterService)
 │   ├── Utilities/    # Leitura/escrita de arquivo, validação de entrada, caminho padrão e tratamento de exceção da API
 │   └── Program.cs    # Ponto de entrada
-└── Coinly.Test/      # Testes de unidade (xUnit v3 + Bogus) dos Filtros e Modelos
+└── Coinly.Test/      # Testes de unidade (xUnit v3 + Bogus + Moq) dos Filtros, Modelos, Clients e Services
 ```

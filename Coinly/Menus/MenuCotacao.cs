@@ -23,7 +23,7 @@ public class MenuCotacao : Menu
                 var moeda = match.Groups[1].Value;
                 try
                 {
-                    await CotacaoService.ProcessarConsulta(moeda, client);
+                    await CotacaoService.ProcessarConsulta(moeda, client, new EscritorArquivo());
                     ExibirMensagemVoltarAoMenu();
                 }
                 catch (Exception ex)

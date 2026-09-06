@@ -6,8 +6,8 @@ namespace Coinly.Utilities;
 
 public class EscritorArquivo
 {
-    
-    public static async Task EscreverNoArquivoCSV(Cotacao cotacao)
+
+    public virtual async Task EscreverNoArquivoCSV(Cotacao cotacao)
     {
         try
         {

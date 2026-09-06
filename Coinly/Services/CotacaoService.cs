@@ -6,7 +6,7 @@ namespace Coinly.Services;
 
 public class CotacaoService
 {
-    public static async Task ProcessarConsulta(string moeda, HttpClient client)
+    public static async Task ProcessarConsulta(string moeda, HttpClient client, EscritorArquivo escritor)
     {
         try
         {
@@ -30,7 +30,7 @@ public class CotacaoService
             Cotacao.MostrarCotacaoTabela();
             cotacao.MostrarCotacao();
             Console.WriteLine("--------------------------------------------");
-            await EscritorArquivo.EscreverNoArquivoCSV(cotacao);
+            await escritor.EscreverNoArquivoCSV(cotacao);
         }
         catch (Exception ex)
         {
